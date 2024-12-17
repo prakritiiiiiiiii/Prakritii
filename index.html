@@ -11,23 +11,108 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #ff0af3;
-            font-family: Arial, sans-serif;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #ff0af3, #ff79f6);
+            font-family: "Arial", sans-serif;
+            overflow: hidden;
         }
         h1 {
             font-size: 2rem;
             color: #ffffff;
+            text-align: center;
             animation: fadeIn 2s ease-in-out infinite alternate;
+        }
+        .quote {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-top: 20px;
+            font-style: italic;
+            text-align: center;
+        }
+        .flowers {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .flower {
+            position: absolute;
+            background-color: pink;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            animation: float 5s ease-in-out infinite;
         }
         @keyframes fadeIn {
             0% { opacity: 0.5; transform: scale(0.9); }
             100% { opacity: 1; transform: scale(1); }
         }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        canvas {
+            border: 2px solid white;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
-    <h1>Hi, my name is Prakriti Uprety.</h1><br>
-    <h1>I am strong beautiful and Prettiest girl.  </h1><br>
+    <h1>Hi, my name is Prakriti Uprety.</h1>
+    <h1>I am a strong, beautiful, and a prettyyyyyyyyyyyyyy girl.</h1>
     <h1>This website belongs to me.</h1>
+    <p class="quote">"Shining like the whole universe is mine."</p>
+
+    <canvas id="girlCanvas" width="200" height="200"></canvas>
+
+    <div class="flowers">
+    </div>
+
+    <script>
+        const canvas = document.getElementById("girlCanvas");
+        const ctx = canvas.getContext("2d");
+
+        ctx.fillStyle = "#ffe0bd";
+        ctx.beginPath();
+        ctx.arc(100, 70, 50, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "#000";
+        ctx.beginPath();
+        ctx.arc(80, 60, 5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(120, 60, 5, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = "#000";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(100, 80, 20, 0, Math.PI);
+        ctx.stroke();
+
+        ctx.fillStyle = "#000";
+        ctx.beginPath();
+        ctx.arc(100, 50, 60, Math.PI, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.fillStyle = "#ffe0bd";
+        ctx.fillRect(90, 120, 20, 40);
+        ctx.fillStyle = "#ff79f6";
+        ctx.fillRect(70, 160, 60, 80);
+
+        const flowerContainer = document.querySelector('.flowers');
+        for (let i = 0; i < 50; i++) {
+            const flower = document.createElement('div');
+            flower.classList.add('flower');
+            flower.style.width = `${Math.random() * 10 + 5}px`;
+            flower.style.height = flower.style.width;
+            flower.style.left = `${Math.random() * 100}%`;
+            flower.style.top = `${Math.random() * 100}%`;
+            flower.style.animationDelay = `${Math.random() * 5}s`;
+            flowerContainer.appendChild(flower);
+        }
+    </script>
 </body>
 </html>
