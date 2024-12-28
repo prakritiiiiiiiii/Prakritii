@@ -15,19 +15,35 @@
             background: linear-gradient(to bottom, #ff0af3, #ff79f6);
             font-family: "Arial", sans-serif;
             overflow: hidden;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         h1 {
-            font-size: 2rem;
-            color: #ffffff;
-            text-align: center;
+            font-size: 2.5rem;
+            margin: 10px 0;
             animation: fadeIn 2s ease-in-out infinite alternate;
         }
         .quote {
             font-size: 1.5rem;
-            color: #ffffff;
-            margin-top: 20px;
+            margin: 20px;
             font-style: italic;
             text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1rem;
+            color: white;
+            background: #ff007a;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            transform: scale(1.1);
+            background: #d10064;
         }
         .flowers {
             position: absolute;
@@ -49,35 +65,39 @@
         }
         @keyframes float {
             0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-10px); }
             100% { transform: translateY(0); }
         }
         canvas {
             border: 2px solid white;
             border-radius: 50%;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 <body>
-    <h1>Hi, my name is Prakriti Uprety.</h1>
-    <h1>I am a strong, beautiful, and a prettttyyyyyyy girl.</h1>
-    <h1>This website belongs to me.</h1>
+    <h1>Hi, I am Prakriti Uprety!</h1>
+    <h1>Welcome to my colorful universe.</h1>
     <p class="quote">"Shining like the whole universe is mine."</p>
 
     <canvas id="girlCanvas" width="200" height="200"></canvas>
 
-    <div class="flowers">
-    </div>
+    <button onclick="showMessage()">Click Me!</button>
+
+    <div class="flowers"></div>
 
     <script>
         const canvas = document.getElementById("girlCanvas");
         const ctx = canvas.getContext("2d");
 
+        // Draw face
         ctx.fillStyle = "#ffe0bd";
         ctx.beginPath();
         ctx.arc(100, 70, 50, 0, Math.PI * 2);
         ctx.fill();
 
+        // Draw eyes
         ctx.fillStyle = "#000";
         ctx.beginPath();
         ctx.arc(80, 60, 5, 0, Math.PI * 2);
@@ -86,22 +106,26 @@
         ctx.arc(120, 60, 5, 0, Math.PI * 2);
         ctx.fill();
 
+        // Draw mouth
         ctx.strokeStyle = "#000";
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.arc(100, 80, 20, 0, Math.PI);
         ctx.stroke();
 
+        // Draw hair
         ctx.fillStyle = "#000";
         ctx.beginPath();
         ctx.arc(100, 50, 60, Math.PI, 2 * Math.PI);
         ctx.fill();
 
+        // Draw body
         ctx.fillStyle = "#ffe0bd";
         ctx.fillRect(90, 120, 20, 40);
         ctx.fillStyle = "#ff79f6";
         ctx.fillRect(70, 160, 60, 80);
 
+        // Add floating flowers
         const flowerContainer = document.querySelector('.flowers');
         for (let i = 0; i < 50; i++) {
             const flower = document.createElement('div');
@@ -112,6 +136,11 @@
             flower.style.top = `${Math.random() * 100}%`;
             flower.style.animationDelay = `${Math.random() * 5}s`;
             flowerContainer.appendChild(flower);
+        }
+
+        // Show a message when the button is clicked
+        function showMessage() {
+            alert("Thank you for visiting my website! You are amazing, just like me.");
         }
     </script>
 </body>
