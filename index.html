@@ -9,18 +9,41 @@
             margin: 0;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            background: linear-gradient(to bottom, #ff0af3, #ff79f6);
+            background: linear-gradient(to bottom, #ff9ff3, #feca57);
             font-family: "Arial", sans-serif;
             overflow: hidden;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
+        .navbar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to right, #ff6b81, #c56cf0);
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            margin: 0 15px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: background 0.3s ease;
+        }
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
         h1 {
             font-size: 2.5rem;
-            margin: 10px 0;
+            margin: 80px 0 10px;
             animation: fadeIn 2s ease-in-out infinite alternate;
         }
         .quote {
@@ -77,13 +100,18 @@
     </style>
 </head>
 <body>
-    <h1>Hi, I am Prakriti Uprety!</h1>
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+    </div>
+
+    <h1 id="home">Hi, I am Prakritiiiiiiiii !</h1>
     <h1>Welcome to my colorful universe.</h1>
-    <p class="quote">"Shining like the universe is mine."</p>
+    <p class="quote">"Shining cause the universe is mine."</p>
 
     <canvas id="girlCanvas" width="200" height="200"></canvas>
 
-    <button onclick="showMessage()">Click Me!</button>
+    <button onclick="showMessage()"> More </button>
 
     <div class="flowers"></div>
 
